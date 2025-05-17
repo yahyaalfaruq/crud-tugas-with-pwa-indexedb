@@ -1,0 +1,16 @@
+{
+  "name": "Input Tugas",
+  "short_name": "Tugas",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2196f3",
+  "description": "Aplikasi manajemen input tugas sederhana.",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

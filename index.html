@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Input Tugas</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="shortcut icon" href="./icon.png" type="image/x-icon">
+  <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card">
+      <h1 class="title">
+        Input Tugas
+      </h1>
+
+      <!-- Form input tambah/edit -->
+      <form id="taskForm" class="formColumn">
+        <input type="text" id="titleInput" name="title" placeholder="Judul tugas" class="input" required />
+        <textarea id="descriptionInput" name="description" placeholder="Deskripsi tugas" class="textarea"
+          rows="3"></textarea>
+        <input type="date" id="dueDateInput" name="dueDate" class="input" />
+        <select id="statusInput" name="status" class="input">
+          <option value="Belum mulai" selected>Belum mulai</option>
+          <option value="Sedang berjalan">Sedang berjalan</option>
+          <option value="Selesai">Selesai</option>
+        </select>
+
+        <div class="buttonGroup">
+          <button type="submit" id="submitButton" class="button"><i class="ri-add-circle-line"></i> Tambah</button>
+          <!-- Tombol batal muncul hanya jika edit -->
+          <button type="button" id="cancelButton" class="button cancelButton" style="display:none;"><i class="ri-close-circle-line"></i> Batal</button>
+        </div>
+      </form>
+
+      <!-- List tugas -->
+      <ul id="taskList" class="list">
+        <!-- Item akan di-render di sini oleh script.js -->
+      </ul>
+    </div>
+
+    <!-- Modal Delete (hidden by default) -->
+    <div id="modalOverlay" class="modalOverlay" style="display:none;">
+      <div class="modal">
+        <h3>Konfirmasi Hapus</h3>
+        <p id="modalText">Yakin ingin menghapus tugas?</p>
+        <div class="modalActions">
+          <button id="modalDeleteButton" class="deleteButton"><i class="ri-delete-bin-5-line"></i> Hapus</button>
+          <button id="modalCancelButton" class="cancelButton"><i class="ri-close-circle-line"></i> Batal</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Script JavaScript -->
+  <script src="script.js"></script>
+
+  <!-- Registrasi Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      // Cek apakah browser support Service Worker
+      window.addEventListener('load', () => {
+        // Daftarkan Service Worker setelah halaman selesai load
+        navigator.serviceWorker.register('sw.js')
+          .then(registration => {
+            console.log('SW registered!');
+          })
+          .catch(err => {
+            console.log('SW gagal didaftarkan:', err);
+          });
+      });
+    }
+  </script>
+</body>
+
+</html>
